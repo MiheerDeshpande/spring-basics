@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- first apply namespace from spring 5 documentaion pdf in core technologies 
+	- Container overview - configuration metadata firstly you use beans tag for 
+	each class you have to declare a bean so that container knows which classes 
+	to make an objects of -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		https://www.springframework.org/schema/beans/spring-beans.xsd
+ 		http://www.springframework.org/schema/context
+ 		http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!--  first always declare the non dependent bean ie address then you declare the dependent bean ie Emp  -->
+	
+	<bean class="com.springcore.auto.wire.Address" name="address">
+		<property name="street" value="ramnagar"/>
+		<property name="city" value="delhi"/>
+	</bean>
+	
+	<!-- first using by name -->
+	<!--  to make an object of Emp we require Address reference 
+	spring container searches the xml file for any bean named as per the field variable name 
+	2 names should be same 1. name given to the bean should be same as 2. the feild variable name in the class -->
+	<bean class="com.springcore.auto.wire.Emp" name="emp1" autowire="byName"/>
+	<!--  searches for bean whose class makes an object of address type -->
+	<!--  here we made another bean `which creates same object reference but has different bean name-->
+	<!-- by name , by type calls setter injection  constructor calls constructor injection-->
+	<bean class="com.springcore.auto.wire.Emp" name="emp2" autowire="byType"/>
+	
+	
+	
+</beans>
+
+
+
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- first apply namespace from spring 5 documentaion pdf in core technologies 
+	- Container overview - configuration metadata firstly you use beans tag for 
+	each class you have to declare a bean so that container knows which classes 
+	to make an objects of -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		https://www.springframework.org/schema/beans/spring-beans.xsd
+ 		http://www.springframework.org/schema/context
+ 		http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- student1 is the name of the bean -->
+	<!-- we have given metadata to the spring container -->
+
+	<bean class="com.springcore.Student" name="student1">
+		<!-- when you setup a feild with the help of property tag it executes as 
+			setter injection ie setter method will be called -->
+		<property name="studentId">
+			<value>234234</value>
+		</property>
+		<property name="studentName">
+			<value>Miheer Deshpande</value>
+		</property>
+		<property name="studentAddress">
+			<value>Delhi</value>
+		</property>
+
+		<!-- this is your second bean specifying same class -->
+	</bean>
+
+	<bean class="com.springcore.Student" name="student2">
+		<!-- specifying data to the value not as a tag but as a attribute to the 
+			property tag -->
+		<property name="studentId" value="234234" />
+		<property name="studentName" value="john" />
+		<property name="studentAddress" value="Gurgaon" />
+	</bean>
+	
+	<!-- using p schema -->
+	<!-- declare pschema earlier above -->
+	<bean class="com.springcore.Student" name="student3" 
+	p:studentId="23236"
+	p:studentName="Shyam Singh"
+	p:studentAddress="Lucknow"/>
+	
+</beans>
+
+
+
+

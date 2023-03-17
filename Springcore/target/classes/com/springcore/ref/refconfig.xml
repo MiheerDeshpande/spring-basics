@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- first apply namespace from spring 5 documentaion pdf in core technologies 
+	- Container overview - configuration metadata firstly you use beans tag for 
+	each class you have to declare a bean so that container knows which classes 
+	to make an objects of -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		https://www.springframework.org/schema/beans/spring-beans.xsd
+ 		http://www.springframework.org/schema/context
+ 		http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- because class a is dependent on object b therefore object of b needs to be declared first -->
+	<bean class = "com.springcore.ref.B" name ="bref">
+		<property name="y" value="90"></property>
+	</bean>
+	
+	
+	
+	<bean class = "com.springcore.ref.A" name ="aref">
+		<property name="x" value="12"></property>
+		<!-- now in the feild ob we want a reference of object of B class 
+		for that we use a ref tag which helps us define which reference entity gets into ob feild -->
+		<property name="ob">
+			<!-- here give the alias of the bean whose refrence you want to insert here -->
+			<ref bean="bref"/>
+		</property>
+	</bean>
+
+
+</beans>
+
+
+
+

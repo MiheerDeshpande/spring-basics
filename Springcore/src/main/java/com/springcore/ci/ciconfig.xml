@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- first apply namespace from spring 5 documentaion pdf in core technologies 
+	- Container overview - configuration metadata firstly you use beans tag for 
+	each class you have to declare a bean so that container knows which classes 
+	to make an objects of -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		https://www.springframework.org/schema/beans/spring-beans.xsd
+ 		http://www.springframework.org/schema/context
+ 		http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<bean class="com.springcore.ci.Certi" name="cer">
+		<constructor-arg value="Android Using Kotlin" />	
+	</bean>
+		
+	<!-- this is a constructor injection -->
+	<!-- with constructor args tag we can give the input to the constuctor as a parameter
+	here one constructor-arg tag corresponds to only one parameter in the constructor -->		
+	<bean class = "com.springcore.ci.Person">
+		<!-- inserting value is also of 3 types 
+		1. value tag
+		2. value argument 
+		3. c- schema for constructor schema --> 
+		<constructor-arg>
+			<value>Miheer</value>
+		</constructor-arg>
+		<constructor-arg value="2345" type="int" /><!-- to prevent ambiguity we use type attribute -->
+		<constructor-arg ref ="cer"></constructor-arg>
+	</bean>
+	
+	
+</beans>
+
+
+
+
